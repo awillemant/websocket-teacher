@@ -15,6 +15,8 @@ import javax.websocket.server.ServerEndpoint;
 import wa.courses.converters.WebCommandDecoder;
 import wa.courses.converters.WebCommandEncoder;
 import wa.courses.data.WebCommand;
+import wa.courses.service.CommandService;
+import wa.courses.service.SessionService;
 
 @ServerEndpoint(
 		value = "/control",
@@ -22,70 +24,37 @@ import wa.courses.data.WebCommand;
 		encoders={WebCommandEncoder.class})
 public class RevealController {
 
-	private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
-	private static WebCommand lastSlideCommand;
-	
+
+    private final static SessionService sessionService = new SessionService();
+    private final static CommandService commandService = new CommandService();
+
+
+
 	@OnOpen
 	public void open(Session session){
-		System.err.println("Connexion de "+session.getId());
-		sessions.add(session);
-		broadcastSessionsSize();
-		if(lastSlideCommand!=null){
-			try {
-				session.getBasicRemote().sendObject(lastSlideCommand);
-			} catch (IOException | EncodeException e) {
-				e.printStackTrace();
-			}
-		}
+        sessionService.addSession(session);
+
+        commandService.handleConnection(session);
+
+
 	}
 
 	
 	
 	@OnClose
 	public void close(Session session){
-		System.err.println("Deconnexion de "+session.getId());
-		sessions.remove(session);
-		broadcastSessionsSize();
+		sessionService.removeSession(session);
+
 	}
-	
-	private void broadcastSessionsSize() {
-		broadcast(new WebCommand("sessions",Integer.toString(sessions.size())));
-	}
-	
+
 	
 
 
 	@OnMessage
 	public void receiveInfo(WebCommand command, Session session) throws IOException {
-		System.out.println("Message recu de "+session.getId());
-		if(command.getCommand().equals("slide")){
-			lastSlideCommand = command;
-		}
-		broadcast(command);
+		commandService.handle(command);
+        sessionService.broadcast(command);
 
 	}
 
-	private void broadcast(WebCommand command) {
-		for (Session s : sessions) {
-			if (s.isOpen()) {
-				sendCommand(s, command);
-			}
-		}
-	}
-	
-	
-
-	
-	
-	private void sendCommand(Session session, WebCommand command) {
-		try {
-			if(command!=null){
-				session.getBasicRemote().sendObject(command);
-			}
-		} catch (IOException | EncodeException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
 }
