@@ -16,14 +16,17 @@ public class WebCommandDecoder implements Decoder.Text<WebCommand> {
 
     private ObjectMapper mapper;
 
+
     @Override
     public void destroy() {
     }
+
 
     @Override
     public void init(EndpointConfig arg0) {
         mapper = new ObjectMapper();
     }
+
 
     @Override
     public WebCommand decode(String json) throws DecodeException {
@@ -34,9 +37,9 @@ public class WebCommandDecoder implements Decoder.Text<WebCommand> {
         }
     }
 
+
     @Override
     public boolean willDecode(String json) {
         return json.startsWith("{") && json.endsWith("}");
     }
-
 }

@@ -15,14 +15,17 @@ public class WebCommandEncoder implements Encoder.Text<WebCommand> {
 
     private ObjectMapper mapper;
 
+
     @Override
     public void destroy() {
     }
+
 
     @Override
     public void init(EndpointConfig arg0) {
         mapper = new ObjectMapper();
     }
+
 
     @Override
     public String encode(WebCommand command) {
@@ -33,6 +36,4 @@ public class WebCommandEncoder implements Encoder.Text<WebCommand> {
             return e.getMessage();
         }
     }
-
-
 }

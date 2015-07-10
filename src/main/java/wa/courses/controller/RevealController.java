@@ -17,13 +17,14 @@ import java.io.IOException;
 
 @ServerEndpoint(
         value = "/control",
-        decoders = {WebCommandDecoder.class},
-        encoders = {WebCommandEncoder.class})
+        decoders = { WebCommandDecoder.class },
+        encoders = { WebCommandEncoder.class })
 public class RevealController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RevealController.class);
 
     private final static SessionService sessionService = new SessionService();
+
     private final static CommandService commandService = new CommandService();
 
 
@@ -38,7 +39,6 @@ public class RevealController {
     @OnClose
     public void close(Session session) {
         sessionService.removeSession(session);
-
     }
 
 
@@ -46,7 +46,5 @@ public class RevealController {
     public void receiveInfo(WebCommand command, Session session) throws IOException {
         commandService.handle(command);
         sessionService.broadcast(command);
-
     }
-
 }
