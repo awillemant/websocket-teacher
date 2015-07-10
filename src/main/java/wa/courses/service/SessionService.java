@@ -1,5 +1,7 @@
 package wa.courses.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import wa.courses.data.WebCommand;
 
 import javax.websocket.EncodeException;
@@ -10,6 +12,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SessionService {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(SessionService.class);
+    
     private final Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
 
 

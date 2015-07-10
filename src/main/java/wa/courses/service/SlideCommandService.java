@@ -1,5 +1,7 @@
 package wa.courses.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import wa.courses.data.WebCommand;
 
 import javax.websocket.EncodeException;
@@ -8,6 +10,8 @@ import java.io.IOException;
 
 public class SlideCommandService implements CommandSubService{
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(SlideCommandService.class);
+    
     private WebCommand lastSlideCommand;
 
 

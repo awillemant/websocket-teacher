@@ -1,5 +1,7 @@
 package wa.courses.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import wa.courses.data.WebCommand;
 
 import javax.websocket.Session;
@@ -8,6 +10,8 @@ import java.util.Map;
 
 public class CommandService {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(CommandService.class);
+    
     public SlideCommandService slideCommandService = new SlideCommandService();
 
     Map<String,CommandSubService> subServices;
