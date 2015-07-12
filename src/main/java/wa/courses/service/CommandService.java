@@ -11,26 +11,27 @@ import java.util.Map;
 public class CommandService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CommandService.class);
-    
-    public SlideCommandService slideCommandService = new SlideCommandService();
 
-    Map<String,CommandSubService> subServices;
+    Map<String, CommandSubService> subServices;
+
 
     public CommandService() {
         subServices = new HashMap<>();
-        subServices.put("slide",slideCommandService);
+        subServices.put("slide", new SlideCommandService());
+        subServices.put("quiz", new QuizCommandService());
     }
 
-    public void handle(WebCommand command) {
+
+    public void handle(WebCommand command, Session session) {
         String commandType = command.getCommand();
-        if(commandType !=null && !commandType.isEmpty() && subServices.containsKey(commandType)){
-            subServices.get(commandType).handle(command);
+        if (commandType != null && !commandType.isEmpty() && subServices.containsKey(commandType)) {
+            subServices.get(commandType).handle(command, session);
         }
     }
 
 
     public void handleConnection(Session session) {
-        for(Map.Entry<String,CommandSubService> entry:subServices.entrySet()){
+        for (Map.Entry<String, CommandSubService> entry : subServices.entrySet()) {
             entry.getValue().handleConnection(session);
         }
     }

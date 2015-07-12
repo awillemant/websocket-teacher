@@ -44,7 +44,7 @@ public class RevealController {
 
     @OnMessage
     public void receiveInfo(WebCommand command, Session session) throws IOException {
-        commandService.handle(command);
+        commandService.handle(command, session);
         sessionService.broadcast(command);
     }
 }

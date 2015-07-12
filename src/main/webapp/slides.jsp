@@ -1,4 +1,4 @@
-<section>
+﻿<section>
     <h1>Reveal.js</h1>
 
     <h3>The HTML Presentation Framework</h3>
@@ -15,7 +15,7 @@
         Question du quiz #1
     </p>
     <ol>
-        <li>Réponse 1</li>
+        <li>Rééponse 1</li>
         <li>Réponse 2</li>
         <li>Réponse 3</li>
         <li>Réponse 4</li>

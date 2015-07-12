@@ -30,7 +30,7 @@
 
     <style>
         .quiz ol {
-            display: none;
+            /*display: none;*/
         }
     </style>
 
@@ -42,7 +42,6 @@
 <body>
 
 <div class="reveal">
-
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
         <%@ include file="slides.jsp" %>

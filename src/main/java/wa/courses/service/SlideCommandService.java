@@ -8,21 +8,22 @@ import javax.websocket.EncodeException;
 import javax.websocket.Session;
 import java.io.IOException;
 
-public class SlideCommandService implements CommandSubService{
+public class SlideCommandService implements CommandSubService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SlideCommandService.class);
-    
+
     private WebCommand lastSlideCommand;
 
 
     @Override
-    public void handle(WebCommand command) {
+    public void handle(WebCommand command, Session session) {
         lastSlideCommand = command;
     }
 
+
     @Override
     public void handleConnection(Session session) {
-        if(lastSlideCommand!=null){
+        if (lastSlideCommand != null) {
             try {
                 session.getBasicRemote().sendObject(lastSlideCommand);
             } catch (IOException | EncodeException e) {
@@ -31,9 +32,8 @@ public class SlideCommandService implements CommandSubService{
         }
     }
 
+
     public WebCommand getLastSlideCommand() {
         return lastSlideCommand;
     }
-
-
 }
