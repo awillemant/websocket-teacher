@@ -14,13 +14,13 @@
     <p>
         Question du quiz #1
     </p>
-    <ol>
-        <li>Réponse 1</li>
-        <li>Réponse 2</li>
-        <li>Réponse 3</li>
-        <li>Réponse 4</li>
-        <li>Réponse 5</li>
-    </ol>
+    <ul>
+        <li class="good fragment" data-fragment-index="0">Réponse 1</li>
+        <li class="bad">Réponse 2</li>
+        <li class="good fragment" data-fragment-index="0">Réponse 3</li>
+        <li class="bad">Réponse 4</li>
+        <li class="bad">Réponse 5</li>
+    </ul>
 </section>
 
 <section id="quiz2" class="quiz">
@@ -29,12 +29,12 @@
     <p>
         Question du quiz #2
     </p>
-    <ol>
+    <ul>
         <li>Réponse 6</li>
         <li>Réponse 7</li>
         <li>Réponse 8</li>
         <li>Réponse 9</li>
-    </ol>
+    </ul>
 </section>
 
 <section>

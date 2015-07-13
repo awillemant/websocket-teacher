@@ -6,6 +6,10 @@ var RevealQuiz = (function () {
         for (i in answerGroups) {
             for (var j = 0; j < answerGroups[i].length; j++) {
                 answerGroups[i][j].onclick = getClickCallback(i, j);
+                answerGroups[i][j].classList.remove("good");
+                answerGroups[i][j].classList.remove("bad");
+                answerGroups[i][j].classList.remove("fragment");
+                answerGroups[i][j].removeAttribute("data-fragment-index");
             }
         }
 

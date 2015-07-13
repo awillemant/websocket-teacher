@@ -29,7 +29,7 @@
     </script>
 
     <style>
-        .quiz ol {
+        .quiz ol li.bad {
             display: none;
         }
     </style>
