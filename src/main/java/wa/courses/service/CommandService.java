@@ -14,11 +14,21 @@ public class CommandService {
 
     Map<String, CommandSubService> subServices;
 
+    private static CommandService instance;
 
-    public CommandService() {
+
+    private CommandService() {
         subServices = new HashMap<>();
         subServices.put("slide", new SlideCommandService());
         subServices.put("quiz", new QuizCommandService());
+    }
+
+
+    public static CommandService getInstance() {
+        if (instance == null) {
+            instance = new CommandService();
+        }
+        return instance;
     }
 
 

@@ -16,12 +16,12 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 
 @ServerEndpoint(
-        value = "/control",
+        value = "/admin",
         decoders = { WebCommandDecoder.class },
         encoders = { WebCommandEncoder.class })
-public class RevealController {
+public class RevealAdminController {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(RevealController.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(RevealAdminController.class);
 
     private final static SessionService sessionService = SessionService.getInstance();
 
@@ -30,20 +30,21 @@ public class RevealController {
 
     @OnOpen
     public void open(Session session) {
-        LOGGER.debug("Connexion de la session {}", session.getId());
-        sessionService.addSession(session);
+        LOGGER.debug("Connexion de la session admin {}", session.getId());
+        sessionService.addAdminSession(session);
         commandService.handleConnection(session);
     }
 
 
     @OnClose
     public void close(Session session) {
-        sessionService.removeSession(session);
+        sessionService.removeAdminSession(session);
     }
 
 
     @OnMessage
     public void receiveInfo(WebCommand command, Session session) throws IOException {
         commandService.handle(command, session);
+        sessionService.broadcast(command);
     }
 }

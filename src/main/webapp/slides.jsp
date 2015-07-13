@@ -15,7 +15,7 @@
         Question du quiz #1
     </p>
     <ol>
-        <li>Rééponse 1</li>
+        <li>Réponse 1</li>
         <li>Réponse 2</li>
         <li>Réponse 3</li>
         <li>Réponse 4</li>

@@ -30,7 +30,7 @@
 
     <style>
         .quiz ol {
-            /*display: none;*/
+            display: none;
         }
     </style>
 

@@ -10,10 +10,13 @@ public class QuizCommandService implements CommandSubService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(QuizCommandService.class);
 
+    private final static SessionService sessionService = SessionService.getInstance();
+
 
     @Override
     public void handle(WebCommand command, Session session) {
         LOGGER.info(command.getData() + "from " + session.getId());
+        sessionService.broadcastToAdmins(command);
     }
 
 
