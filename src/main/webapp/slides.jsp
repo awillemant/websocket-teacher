@@ -15,11 +15,11 @@
         Question du quiz #1
     </p>
     <ul>
-        <li class="good fragment" data-fragment-index="0">Réponse 1</li>
-        <li class="bad">Réponse 2</li>
-        <li class="good fragment" data-fragment-index="0">Réponse 3</li>
-        <li class="bad">Réponse 4</li>
-        <li class="bad">Réponse 5</li>
+        <li class="fragment" data-fragment-index="0">Réponse 1<span></span></li>
+        <li>Réponse 2<span></span></li>
+        <li class="fragment" data-fragment-index="0">Réponse 3<span></span></li>
+        <li>Réponse 4<span></span></li>
+        <li>Réponse 5<span></span></li>
     </ul>
 </section>
 

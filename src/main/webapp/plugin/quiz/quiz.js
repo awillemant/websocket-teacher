@@ -5,10 +5,8 @@ var RevealQuiz = (function () {
 
         for (i in answerGroups) {
             for (var j = 0; j < answerGroups[i].length; j++) {
-                answerGroups[i][j].onclick = getClickCallback(i, j);
-                answerGroups[i][j].classList.remove("good");
-                answerGroups[i][j].classList.remove("bad");
-                answerGroups[i][j].classList.remove("fragment");
+                answerGroups[i][j].onclick = getClickCallback(answerGroups[i][j], i, j);
+                answerGroups[i][j].removeAttribute("class");
                 answerGroups[i][j].removeAttribute("data-fragment-index");
             }
         }
@@ -16,7 +14,7 @@ var RevealQuiz = (function () {
     }
 
     parseAnswers = function () {
-        var quizAnswers = document.querySelectorAll('.quiz ol li');
+        var quizAnswers = document.querySelectorAll('.quiz ul li');
         var answerGroups = {}
         for (var i = 0; i < quizAnswers.length; i++) {
             var quizId = quizAnswers[i].parentNode.parentNode.id;
@@ -28,11 +26,13 @@ var RevealQuiz = (function () {
         return answerGroups;
     }
 
-    getClickCallback = function (quizId, answerId) {
+    getClickCallback = function (element, quizId, answerId) {
         return function () {
+            element.classList.toggle("checked");
             data = {
                 quizId: quizId,
-                answerId: answerId
+                answerId: answerId,
+                answerValue: element.classList.contains("checked")
             }
             ws.send(JSON.stringify({command: "quiz", data: JSON.stringify(data)}));
         }
@@ -43,4 +43,5 @@ var RevealQuiz = (function () {
 
     return {open: buildQuiz};
 
-})();
+})
+();

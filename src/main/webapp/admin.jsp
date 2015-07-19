@@ -29,7 +29,7 @@
     </script>
 
     <style>
-        .quiz ol li.bad {
+        .quiz ul li:not(.fragment) {
             display: none;
         }
     </style>

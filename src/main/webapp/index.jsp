@@ -18,6 +18,17 @@
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="webjars/reveal.js/3.0.0/lib/css/zenburn.css">
 
+    <style>
+        .quiz ul li {
+            list-style-type: circle;
+            cursor: pointer;
+        }
+
+        .quiz ul li.checked {
+            list-style-type: disc;
+        }
+    </style>
+
     <!-- Printing and PDF exports -->
     <script>
         var link = document.createElement('link');
