@@ -15,9 +15,9 @@
         Question du quiz #1
     </p>
     <ul>
-        <li class="fragment" data-fragment-index="0">Réponse 1<span></span></li>
+        <li class="fragment" data-fragment-index="0">Réponse 1 <span></span></li>
         <li>Réponse 2<span></span></li>
-        <li class="fragment" data-fragment-index="0">Réponse 3<span></span></li>
+        <li class="fragment" data-fragment-index="0">Réponse 3 <span></span></li>
         <li>Réponse 4<span></span></li>
         <li>Réponse 5<span></span></li>
     </ul>
@@ -30,10 +30,11 @@
         Question du quiz #2
     </p>
     <ul>
-        <li>Réponse 6</li>
-        <li>Réponse 7</li>
-        <li>Réponse 8</li>
-        <li>Réponse 9</li>
+        <li class="fragment" data-fragment-index="0">Réponse 1 <span></span></li>
+        <li>Réponse 2<span></span></li>
+        <li>Réponse 3 <span></span></li>
+        <li>Réponse 4<span></span></li>
+        <li class="fragment" data-fragment-index="0">Réponse 5<span></span></li>
     </ul>
 </section>
 

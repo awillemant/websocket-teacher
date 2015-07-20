@@ -34,7 +34,7 @@
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? 'webjars/reveal.js/3.0.0/css/print/pdf.css' : 'webjars/reveal.js/3.0.0/css/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'webjars/reveal.js/3.0.0/css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
         if (window.location.search.match(/print-pdf/gi)) {
             window.print();

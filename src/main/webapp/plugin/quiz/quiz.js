@@ -37,8 +37,9 @@ var RevealQuiz = (function () {
             ws.send(JSON.stringify({command: "quiz", data: JSON.stringify(data)}));
         }
     };
-
-    buildQuiz();
+    if (!window.location.search.match(/print-pdf/gi)) {
+        buildQuiz();
+    }
 
 
     return {open: buildQuiz};
